@@ -76,6 +76,9 @@
 
 #pragma mark FlutterPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
+    if (OneSignalPlugin.sharedInstance.channel != nil) {
+        return;
+    }
 
     [OneSignal initWithLaunchOptions:nil];
     [OneSignal setMSDKType:@"flutter"];
